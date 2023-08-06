@@ -17,3 +17,8 @@
 - Modules: groups together code
 - Filters: handles errors that occur during request handling
 - Interceptors: adds extra logic to incoming requests or outgoing responses
+
+## Nest CLI
+
+- `nest generate module messages`: creates a new module with the name 'messages'
+- `nest generate controller messages/messages --flat`: creates a new controller called 'messages' inside of the messages dir. `--flat` is to not create a new folder called 'controllers'
