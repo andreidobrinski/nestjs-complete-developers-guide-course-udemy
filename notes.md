@@ -22,3 +22,39 @@
 
 - `nest generate module messages`: creates a new module with the name 'messages'
 - `nest generate controller messages/messages --flat`: creates a new controller called 'messages' inside of the messages dir. `--flat` is to not create a new folder called 'controllers'
+
+## Dependency Injection
+
+- used widely in Nest. Classes should not create copies of it's own dependencies
+
+```js
+// bad - service creates a copy of repo
+class MessagesService {
+  messagesRepo: MessagesRepository;
+  constructor() {
+    this.messagesRepo = new MessagesRepository();
+  }
+}
+
+// better - service receives its dependency. Downside is that we need to create this with specifically the MessagesRepository
+class MessagesService {
+  messagesRepo: MessagesRepository;
+  constructor(repo: MessagesRepository) {
+    this.messagesRepo = repo;
+  }
+}
+
+// best - service receives dependency and doesn't require MessagesRepository specifically
+interface Repository {
+  findOne(id: string);
+  findAll();
+  create(content: string);
+}
+class MessagesRepository {
+  messagesRepo: Repository;
+  constructor(repo: Repository) {
+    this.messagesRepo = repo;
+  }
+}
+// this is good because we can replace MessagesRepository with a mock repo that doesn't write to the file system for faster testing
+```
