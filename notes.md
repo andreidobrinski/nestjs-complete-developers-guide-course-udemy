@@ -58,3 +58,7 @@ class MessagesRepository {
 }
 // this is good because we can replace MessagesRepository with a mock repo that doesn't write to the file system for faster testing
 ```
+
+## SQLite
+
+- add SQLite vscode extension for help with debugging
