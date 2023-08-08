@@ -66,3 +66,10 @@ class MessagesRepository {
 ## NotFoundExceptions
 
 Throwing a NotFoundException from the service has a limitation in that it will not be compatible with controller that don't user HTTP (eg WebSockets or GRPC). This course throws NotFoundExceptions from the service but it would be something to look out for if the service needs to support multiple protocols.
+
+## Limitations with using @Exclude to remove properties
+
+- if we exclude something using the decorator, we must exclude it at the entity level
+- it's not possible to then show the excluded property to an admin user if needed
+- alternative is to create multiple DTOs for different use cases and use a custom interceptor to decide which DTO to send.
+- robust solution is the interceptor between the controller and the response, rather than excluding at the entity level
