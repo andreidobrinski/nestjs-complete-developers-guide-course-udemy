@@ -62,3 +62,7 @@ class MessagesRepository {
 ## SQLite
 
 - add SQLite vscode extension for help with debugging
+
+## NotFoundExceptions
+
+Throwing a NotFoundException from the service has a limitation in that it will not be compatible with controller that don't user HTTP (eg WebSockets or GRPC). This course throws NotFoundExceptions from the service but it would be something to look out for if the service needs to support multiple protocols.
