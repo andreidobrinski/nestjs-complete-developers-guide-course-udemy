@@ -73,3 +73,10 @@ Throwing a NotFoundException from the service has a limitation in that it will n
 - it's not possible to then show the excluded property to an admin user if needed
 - alternative is to create multiple DTOs for different use cases and use a custom interceptor to decide which DTO to send.
 - robust solution is the interceptor between the controller and the response, rather than excluding at the entity level
+
+## Rainbow Table Attack
+
+- malicious actor stores a table of hashed versions of common passwords
+- if they get access to the app's db table, they compare the user's hashed passwords against their existing table
+- if they find a match, they know what the user's password must be
+- solution to this is to salt the hashed passwords
