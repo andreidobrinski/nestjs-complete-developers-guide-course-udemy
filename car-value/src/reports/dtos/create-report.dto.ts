@@ -25,7 +25,7 @@ export class CreateReportDto {
   mileage: number;
 
   @IsLongitude()
-  lgn: number;
+  lng: number;
 
   @IsLatitude()
   lat: number;
