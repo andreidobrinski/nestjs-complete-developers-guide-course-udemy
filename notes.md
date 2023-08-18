@@ -80,3 +80,16 @@ Throwing a NotFoundException from the service has a limitation in that it will n
 - if they get access to the app's db table, they compare the user's hashed passwords against their existing table
 - if they find a match, they know what the user's password must be
 - solution to this is to salt the hashed passwords
+
+## Middlewares, Interceptors, Guards
+
+Order:
+
+1. Middleware
+2. Guards
+3. Interceptors (if available)
+4. Request Handler
+5. Interceptors (if available)
+6. Response
+
+Interceptors execute after any middlewares and any guards.
