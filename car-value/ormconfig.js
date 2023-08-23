@@ -19,6 +19,7 @@ switch (process.env.NODE_ENV) {
       type: 'sqlite',
       database: 'test2.sqlite', // using 2 to preserve db from course
       entities: ['**/*.entities.ts'],
+      migrationsRun: true,
     });
     break;
   case 'production':
